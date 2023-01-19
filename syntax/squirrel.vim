@@ -25,7 +25,6 @@ syn keyword sqConditional	else if switch case default
 syn keyword sqExeption		try catch throw
 syn keyword sqRepeat		for while continue break
 syn keyword sqOperator		in delete typeof instanceof
-syn keyword sqFunction		function
 syn keyword sqStorageClass	local static
 syn keyword sqConstant		null
 syn keyword sqBoolean		true false
@@ -43,6 +42,8 @@ syn match sqNumberD "\<[1-9]\=\d\+\>" display
 syn match sqNumberH "\<0[xX]\x\+\>" display
 syn match sqNumberO "\<0\o\>" display
 syn match sqFloat "\<\d[\.][e\|E]\=[\-]\=\d\+\>" display
+syntax match sqFunction /\<function\>/ skipwhite nextgroup=sqFuncName
+syntax match sqFuncName contained /\<\K\k*/ skipwhite skipempty
 
 "" This code was taken directly from jsdoc.vim
 "" syntax coloring for javadoc
@@ -75,7 +76,8 @@ hi def link sqException     		Exception
 hi def link sqLabel         		Label
 hi def link sqRepeat        		Repeat
 hi def link sqOperator      		Operator
-hi def link sqFunction      		Function
+hi def link sqFunction      		Type
+hi def link sqFuncName      		Function
 hi def link sqStorageClass  		StorageClass
 hi def link sqConstant      		Constant
 hi def link sqBoolean       		Boolean
@@ -99,4 +101,7 @@ hi def link jsDocParam             	Label
 
 
 syn sync maxlines=50
+
+set fo+=r
+set fo+=o
 let b:current_syntax = "squirrel"
