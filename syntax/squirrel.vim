@@ -42,8 +42,13 @@ syn match sqNumberD "\<[1-9]\=\d\+\>" display
 syn match sqNumberH "\<0[xX]\x\+\>" display
 syn match sqNumberO "\<0\o\>" display
 syn match sqFloat "\<\d[\.][e\|E]\=[\-]\=\d\+\>" display
-syntax match sqFunction /\<function\>/ skipwhite nextgroup=sqFuncName
-syntax match sqFuncName contained /\<\K\k*/ skipwhite skipempty
+
+" Functions
+syn match sqFuncName contained /\<\K\k*/ skipwhite skipempty
+syn match sqFunction /\<function\>/ skipwhite nextgroup=sqFuncName
+syn match sqArrowFunc "\w\+\s\+<-\s\+function" skipwhite contains=sqFunction
+syn match sqArrowFunc "\w\+\s\+<-function" skipwhite contains=sqFunction
+syn match sqArrowFunc "\w\+<-function" skipwhite contains=sqFunction
 
 "" This code was taken directly from jsdoc.vim
 "" syntax coloring for javadoc
@@ -70,34 +75,35 @@ syntax match  jsDocTypeNoParam  contained "\%(#\|\"\|\w\|\.\|:\|\/\)\+"
 syntax match  jsDocParam        contained "\%(#\|\$\|-\|'\|\"\|{.\{-}}\|\w\|\.\|:\|\/\|\[.\{-}]\|=\)\+"
 syntax region jsDocSeeTag       contained matchgroup=jsDocSeeTag start="{" end="}" contains=jsDocTags
   
-hi def link sqStatement     		Statement
-hi def link sqConditional   		Conditional
-hi def link sqException     		Exception
-hi def link sqLabel         		Label
-hi def link sqRepeat        		Repeat
-hi def link sqOperator      		Operator
-hi def link sqFunction      		Type
-hi def link sqFuncName      		Function
-hi def link sqStorageClass  		StorageClass
-hi def link sqConstant      		Constant
-hi def link sqBoolean       		Boolean
-hi def link sqComment       		Comment
-hi def link sqCommentL				Comment
-hi def link sqString        		String
-hi def link sqCharacter     		Character
-hi def link sqFloat         		Float
-hi def link sqNumberD				Number
-hi def link sqNumberO				Number
-hi def link sqNumberH				Number
-hi def link sqKeyword				Keyword
+hi def link sqStatement     	Statement
+hi def link sqConditional   	Conditional
+hi def link sqException     	Exception
+hi def link sqLabel         	Label
+hi def link sqRepeat        	Repeat
+hi def link sqOperator      	Operator
+hi def link sqFuncName      	Function
+hi def link sqArrowFunc			sqFuncName
+hi def link sqStorageClass  	StorageClass
+hi def link sqConstant      	Constant
+hi def link sqBoolean       	Boolean
+hi def link sqComment       	Comment
+hi def link sqCommentL			Comment
+hi def link sqString        	String
+hi def link sqCharacter     	Character
+hi def link sqFloat         	Float
+hi def link sqNumberD			Number
+hi def link sqNumberO			Number
+hi def link sqNumberH			Number
+hi def link sqKeyword			Keyword
+hi def link sqFunction      	Type
 
-hi def link jsDocTags              	Special
-hi def link jsDocSeeTag            	Function
-hi def link jsDocType              	Type
-hi def link jsDocTypeBrackets      	jsDocType
-hi def link jsDocTypeRecord        	jsDocType
-hi def link jsDocTypeNoParam       	Type
-hi def link jsDocParam             	Label
+hi def link jsDocTags           Special
+hi def link jsDocSeeTag         Function
+hi def link jsDocType           Type
+hi def link jsDocTypeBrackets   jsDocType
+hi def link jsDocTypeRecord     jsDocType
+hi def link jsDocTypeNoParam    Type
+hi def link jsDocParam          Label
 
 
 syn sync maxlines=50
