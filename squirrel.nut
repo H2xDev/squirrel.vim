@@ -15,6 +15,14 @@ parent yield constructor vargc vargv static function
 // other tokens
 { } : ;
 
+// Java-doc
+/**
+ * Some description
+ *
+ * @param { type } paramName
+ * 
+ * @returns { int }
+ */
 
 
 // literals
