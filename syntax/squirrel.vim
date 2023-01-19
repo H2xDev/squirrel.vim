@@ -52,7 +52,6 @@ syn match sqArrowFunc "\w\+<-function" skipwhite contains=sqFunction
 
 "" This code was taken directly from jsdoc.vim
 "" syntax coloring for javadoc
-syntax region sqComment    		matchgroup=sqComment start="+/\*+"  end="+\*/+"  nextgroup=jsDocParam
 syntax region sqComment    		matchgroup=sqComment start="/\*\s*"  end="\*/" contains=jsDocTags fold
 
 " tags containing a param
