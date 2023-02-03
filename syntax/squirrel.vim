@@ -25,7 +25,7 @@ syn keyword sqConditional	else if switch case default
 syn keyword sqExeption		try catch throw
 syn keyword sqRepeat		for while continue break
 syn keyword sqOperator		in delete typeof instanceof
-syn keyword sqStorageClass	local static
+syn keyword sqStorageClass	local static const
 syn keyword sqConstant		null
 syn keyword sqBoolean		true false
 
@@ -44,11 +44,12 @@ syn match sqNumberO "\<0\o\>" display
 syn match sqFloat "\<\d[\.][e\|E]\=[\-]\=\d\+\>" display
 
 " Functions
-syn match sqFuncName contained /\<\K\k*/ skipwhite skipempty
+syn match sqFuncName contained /\<\K\k*/ skipwhite
 syn match sqFunction /\<function\>/ skipwhite nextgroup=sqFuncName
 syn match sqArrowFunc "\w\+\s\+<-\s\+function" skipwhite contains=sqFunction
 syn match sqArrowFunc "\w\+\s\+<-function" skipwhite contains=sqFunction
 syn match sqArrowFunc "\w\+<-function" skipwhite contains=sqFunction
+
 
 "" This code was taken directly from jsdoc.vim
 "" syntax coloring for javadoc
@@ -73,7 +74,7 @@ syntax region jsDocTypeNoParam  contained start="{" end="}" oneline
 syntax match  jsDocTypeNoParam  contained "\%(#\|\"\|\w\|\.\|:\|\/\)\+"
 syntax match  jsDocParam        contained "\%(#\|\$\|-\|'\|\"\|{.\{-}}\|\w\|\.\|:\|\/\|\[.\{-}]\|=\)\+"
 syntax region jsDocSeeTag       contained matchgroup=jsDocSeeTag start="{" end="}" contains=jsDocTags
-  
+
 hi def link sqStatement     	Statement
 hi def link sqConditional   	Conditional
 hi def link sqException     	Exception
